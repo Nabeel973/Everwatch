@@ -27,4 +27,9 @@ Route::prefix('admin')->group(function() {
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('logout/', 'Auth\AdminLoginController@logout')->name('admin.logout');
     Route::get('/', 'Auth\AdminController@index')->name('admin.dashboard');
+
+    Route::prefix('customers')->name('customers.')->group(function() {
+        Route::get('/view','Admin\CustomersController@index')->name('index');
+    });
+
 }) ;
