@@ -30,6 +30,14 @@ Route::prefix('admin')->group(function() {
 
     Route::prefix('customers')->name('customers.')->group(function() {
         Route::get('/view','Admin\CustomersController@index')->name('index');
+        Route::get('/create','Admin\CustomersController@create')->name('create');
     });
 
-}) ;
+    Route::prefix('settings')->name('settings.')->group(function() {
+        Route::prefix('city')->name('city.')->group(function() {
+            Route::get('/index','Admin\SettingsController@city_index')->name('index');
+            Route::get('/create','Admin\SettingsController@city_create')->name('create');
+        });
+    });
+
+});

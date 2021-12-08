@@ -281,7 +281,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                                <a href="{{route('customers.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create</p>
                                 </a>
@@ -408,7 +408,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/layout/top-nav.html" class="nav-link">
+                                <a href="{{route('settings.city.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>City Management</p>
                                 </a>
@@ -874,9 +874,9 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="height: 100vh; background-color: white;">
         @yield('content')
-        @yield('scripts')
+
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer text-center">
@@ -929,5 +929,7 @@
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="{{asset('dist/js/pages/dashboard.js')}}"></script>--}}
+
+@yield('scripts')
 </body>
 </html>

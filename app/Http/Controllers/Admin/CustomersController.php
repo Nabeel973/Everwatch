@@ -20,4 +20,8 @@ class CustomersController extends Controller
     public function list(){
         //
     }
+
+    public function create(){
+        return view('admin.users.create');
+    }
 }

@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Customers</h1>
+                    <h1 class="m-0">Cities</h1>
                 </div>
             </div>
         </div>
@@ -17,9 +17,9 @@
                 <thead>
                 <tr role="row" class="bg-primary white">
                     <th class="border-primary border-darken-1">S. No.</th>
-                    <th class="border-primary border-darken-1">City</th>
-                    <th class="border-primary border-darken-1">Designation</th>
                     <th class="border-primary border-darken-1">Name</th>
+                    <th class="border-primary border-darken-1">Status</th>
+                    <th class="border-primary border-darken-1">Created By</th>
                 </tr>
                 </thead>
             </table>
@@ -28,10 +28,6 @@
 
 @endsection
 
-{{--<!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>--}}
 @section('scripts')
     <script type="text/javascript">
         $(document).ready(function() {
