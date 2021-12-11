@@ -894,6 +894,7 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+@yield('css')
 
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>

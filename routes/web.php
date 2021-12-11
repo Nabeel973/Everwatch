@@ -37,6 +37,7 @@ Route::prefix('admin')->group(function() {
         Route::prefix('city')->name('city.')->group(function() {
             Route::get('/index','Admin\SettingsController@city_index')->name('index');
             Route::get('/create','Admin\SettingsController@city_create')->name('create');
+            Route::post('/save','Admin\SettingsController@city_store')->name('store');
         });
     });
 
