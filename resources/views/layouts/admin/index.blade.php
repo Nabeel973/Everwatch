@@ -174,15 +174,22 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    <a class="dropdown-item" href="{{ route('settings.profile.edit',Auth::user()->id) }}">Profile</a>
+                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
+
+                </div>
+            </li>
+            <li>
+                <div class="logo-image">
+                    <img src="{{session('img_path')}}" class="img-fluid">
                 </div>
             </li>
         </ul>
@@ -414,9 +421,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/layout/branch.html" class="nav-link">
+                                <a href="{{route('settings.city.branch.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Branch</p>
+                                    <p>Branch Management</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -894,6 +901,18 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<style>
+    .logo-image{
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: -6px;
+    }
+</style>
+
+
+
 @yield('css')
 
 <!-- jQuery -->

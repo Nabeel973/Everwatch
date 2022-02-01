@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Cities</h1>
+                    <h1 class="m-0">Branches</h1>
                 </div>
             </div>
         </div>
@@ -18,6 +18,7 @@
                 <thead>
                 <tr role="row" class="bg-secondary text-center">
                     <th class="border-darken-1">S. No.</th>
+                    <th class="border-darken-1">City</th>
                     <th class="border-darken-1">Name</th>
                     <th class="border-darken-1">Details</th>
                     <th class="border-darken-1">Status</th>
@@ -28,80 +29,97 @@
         </div>
     </section>
 
-    <div class="modal fade" id="add_city_modal" role="dialog" aria-labelledby="add_city_modal" aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="add_city_title">Add City</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{route('settings.city.store')}}" id="city_form" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label>City Name</label>
-                                <input type="text" name="city_name" id="city_name" class="form-control" placeholder="Add City" data-rule-required="true" data-msg-required="City is required">
-                            </div>
-                            <div class="form-group">
-                                <label>City Code</label>
-                                <input type="text" name="city_code" id="city_code" class="form-control" placeholder="City Code" data-rule-required="true" data-msg-required="Code is required">
-                            </div>
-                            <div class="form-group">
-                                <label>Status</label>
-                                <select name="status" id="status" class="form-control select2 p-1" style="width: 100%;text-align: left; " data-rule-required="true" data-msg-required="Status is required">
-                                    <option value="1">Enable</option>
-                                    <option value="2">Disable</option>
-
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Details</label>
-                                <input type="text" name="city_details" id="city_details" class="form-control" placeholder="Add Details">
-                            </div>
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-success border border-secondary">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="edit_city_modal" role="dialog" aria-labelledby="edit_city_title" aria-hidden="true">
+    <div class="modal fade" id="add_branch_modal" role="dialog" aria-labelledby="add_branch_modal" aria-hidden="true">
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title" id="edit_title">Edit City</h4>
+                    <h4 class="modal-title" id="add_city_title">Add Branch</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" id="edit_city_form" method="post">
+                    <form action="{{route('settings.city.branch.store')}}" id="branch_form" method="post">
                         @csrf
+
                         <div class="form-group">
-                            <label>City Name</label>
-                            <input type="text" name="edit_city_name" id="edit_city_name" class="form-control" placeholder="Edit City" data-rule-required="true" data-msg-required="City is required">
+                            <label>Branch Name</label>
+                            <input type="text" name="branch_name" id="branch_name" class="form-control" placeholder="Add Branch*" data-rule-required="true" data-msg-required="Branch Name is required">
                         </div>
                         <div class="form-group">
-                            <label>City Code</label>
-                            <input type="text" name="edit_city_code" id="edit_city_code" class="form-control" placeholder="Edit City Code" data-rule-required="true" data-msg-required="Code is required">
+                            <label>Branch Code</label>
+                            <input type="text" name="branch_code" id="branch_code" class="form-control" placeholder="Branch Code*" data-rule-required="true" data-msg-required="Branch Code is required">
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <select name="city_id" id="city_id" class="form-control select2 p-1" style="width: 100%;text-align: left; " data-rule-required="true" data-msg-required="City is required">
+                                @foreach($cities as $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Status</label>
-                            <select name="edit_status" id="edit_status" class="form-control select2 p-1" style="width: 100%;text-align: left; " data-rule-required="true" data-msg-required="Status is required">
+                            <select name="status" id="status" class="form-control select2 p-1" style="width: 100%;text-align: left; " data-rule-required="true" data-msg-required="Status is required">
                                 <option value="1">Enable</option>
-                                <option value="2">Disable</option>
+                                <option value="0">Disable</option>
 
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Details</label>
-                            <input type="text" name="edit_city_details" id="edit_city_details" class="form-control" placeholder="Add Details">
+                            <input type="text" name="branch_details" id="branch_details" class="form-control" placeholder="Add Details">
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-success border border-secondary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edit_branch_modal" role="dialog" aria-labelledby="edit_branch_title" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="edit_title">Edit Branch</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" id="edit_branch_form" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label>Branch Name</label>
+                            <input type="text" name="edit_branch_name" id="edit_branch_name" class="form-control" placeholder="Edit Branch Name" data-rule-required="true" data-msg-required="Branch Name is required">
+                        </div>
+                        <div class="form-group">
+                            <label>Branch Code</label>
+                            <input type="text" name="edit_branch_code" id="edit_branch_code" class="form-control" placeholder="Edit Branch Code" data-rule-required="true" data-msg-required="Branch Code is required">
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <select name="edit_city_id" id="edit_city_id" class="form-control select2 p-1" style="width: 100%;text-align: left; " data-rule-required="true" data-msg-required="City is required">
+                                @foreach($cities as $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select name="edit_status" id="edit_status" class="form-control select2 p-1" style="width: 100%;text-align: left; " data-rule-required="true" data-msg-required="Status is required">
+                                <option value="1">Enable</option>
+                                <option value="0">Disable</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Details</label>
+                            <input type="text" name="edit_branch_details" id="edit_branch_details" class="form-control" placeholder="Add Details">
                         </div>
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-success border border-secondary">Submit</button>
@@ -121,7 +139,7 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/select2/css/select2.min.css')}}">
-{{--    <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.css')}}">--}}
+    {{--    <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.css')}}">--}}
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables-fixedheader/css/fixedHeader.bootstrap4.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/sweetalert2/sweetalert2.css')}}">
@@ -155,8 +173,8 @@
     <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.js')}}"></script>
     <script src="{{asset('plugins/jquery-validation/jquery.validate.js')}}"></script>
 
-   {{-- <script src="{{asset('plugins/datatables-buttons/js/buttons.print.js')}}"></script>
---}}
+    {{-- <script src="{{asset('plugins/datatables-buttons/js/buttons.print.js')}}"></script>
+ --}}
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -164,14 +182,27 @@
                 placeholder:'Select Status',
                 width:'100%',
                 containerCssClass: 'p-1',
-                dropdownParent: $("#city_form")
+                dropdownParent: $("#branch_form")
+            });
+
+            $('#city_id').prepend('<option value="" selected="selected"></option>').select2({
+                placeholder:'Select City',
+                width:'100%',
+                containerCssClass: 'p-1',
+                dropdownParent: $("#branch_form")
             });
 
             $('#edit_status').select2({
                 placeholder:'Select Status',
                 width:'100%',
                 containerCssClass: 'p-1',
-                dropdownParent: $("#edit_city_form")
+                dropdownParent: $("#edit_branch_form")
+            });
+            $('#edit_city_id').select2({
+                placeholder:'Select City',
+                width:'100%',
+                containerCssClass: 'p-1',
+                dropdownParent: $("#edit_branch_form")
             });
 
 
@@ -188,7 +219,7 @@
                         text: '<i class="la la-plus-circle"></i> Add',
                         className: 'btn btn-success add',
                         action: function (e, dt, node, config) {
-                            $('#add_city_modal').modal('show');
+                            $('#add_branch_modal').modal('show');
                         }
                     },
                     {
@@ -198,20 +229,21 @@
                         text: '<i class="la la-file-excel-o"></i> Excel',
                     }
                 ],
-              /*  language: {
-                    processing: data_table_loader
-                },*/
+                /*  language: {
+                      processing: data_table_loader
+                  },*/
                 serverSide: true,
                 ajax: {
-                    url: '{{ route('settings.city.list') }}'
+                    url: '{{ route('settings.city.branch.list') }}'
                 },
                 rowId: 'id',
                 order: [1, 'desc'],
                 columns: [
                     {data: 'serial_number', orderable: false, searchable: false, name: 'serial_number', class: 'align-middle serial_number', targets: 0, render: function (data, type, row) {return '';}},
-                    {data: 'name', name:"name",  class: 'align-middle name'},
-                    {data: 'details', name:"details", class: 'align-middle details'},
-                    {data: 'status', name:"status", class: 'align-middle status'},
+                    {data: 'city', name:"c.name",  class: 'align-middle city'},
+                    {data: 'name', name:"branches.name",  class: 'align-middle name'},
+                    {data: 'details', name:"branches.details", class: 'align-middle details'},
+                    {data: 'status', name:"branches.status", class: 'align-middle status'},
                     {data: 'action', name:"action", class: 'text-center action',orderable:false},
                 ],
                 rowCallback: function(row, data, index) {
@@ -263,42 +295,43 @@
                 }
             });
 
-            $('#datatable tbody').on('click', 'tr td.action .btn-group .dropdown-menu .dropdown-item', function() {
-                var city_id = table.row( $(this).parents('tr') ).data().id;
 
-                if ($(this).hasClass('edit_city')) {
+            $('#datatable tbody').on('click', 'tr td.action .btn-group .dropdown-menu .dropdown-item', function() {
+                var branch_id = table.row( $(this).parents('tr') ).data().id;
+
+                if ($(this).hasClass('edit_branch')) {
                     $.ajax({
-                        url: '{!! route('settings.city.edit') !!}',
+                        url: '{!! route('settings.city.branch.edit') !!}',
                         method: 'POST',
                         data: {
                             '_token': '{{ csrf_token() }}',
-                            'city_id': city_id
+                            'branch_id': branch_id
                         }
                     }).done(function(data){
                         if(data){
-                            var city = data.name;
+                            var branch = data.name;
                             var code = data.code;
                             var status = data.status;
                             var detail = data.details;
+                            var city_id = data.city;
 
-                            console.log(status);
-
-                            $('#edit_city_name').val(city);
-                            $('#edit_city_code').val(code);
+                            $('#edit_branch_name').val(branch);
+                            $('#edit_branch_code').val(code);
                             $('#edit_status').val(status).trigger('change');
-                            $('#edit_city_details').val(detail);
-                            $('#edit_city_modal').modal('show');
+                            $('#edit_city_id').val(city_id).trigger('change');
+                            $('#edit_branch_details').val(detail);
+                            $('#edit_branch_modal').modal('show');
 
-                            var route = '{!! route('settings.city.update', ':id') !!}';
+                            var route = '{!! route('settings.city.branch.update', ':id') !!}';
                             route = route.replace(':id', city_id);
-                            $("#edit_city_form").attr('action', route);
+                            $("#edit_branch_form").attr('action', route);
                         }
                     });
 
                 }
             });
 
-            $( "#city_form" ).validate({
+            $( "#branch_form" ).validate({
                 errorClass:"danger",
                 normalizer: function(value) {
                     return $.trim(value);
@@ -311,7 +344,7 @@
 
                     swal.fire({
                         title: 'Please Wait!',
-                        text: 'Your City is being created!',
+                        text: 'Your Branch is being created!',
                         icon: 'success',
                         buttons: false,
                         closeOnClickOutside: false,
@@ -322,7 +355,7 @@
                 }
             });
 
-            $( "#edit_city_form" ).validate({
+            $( "#edit_branch_form" ).validate({
                 errorClass:"danger",
                 normalizer: function(value) {
                     return $.trim(value);
@@ -335,7 +368,7 @@
 
                     swal.fire({
                         title: 'Please Wait!',
-                        text: 'City is being updated!',
+                        text: 'Branch is being updated!',
                         icon: 'success',
                         buttons: false,
                         closeOnClickOutside: false,
@@ -346,10 +379,10 @@
                 }
             });
 
-            $('#add_city_modal').on('hide.bs.modal', function () {
-                $('#city_form #city_name').val('');
-                $('#city_form #city_code').val('');
-                $('#city_form #city_details').val('');
+            $('#add_branch_modal').on('hide.bs.modal', function () {
+                $('#branch_form #branch_name').val('');
+                $('#branch_form #branch_code').val('');
+                $('#branch_form #branch_details').val('');
                 $('#status').val('').trigger('change');
             });
 

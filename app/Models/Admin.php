@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class Admin extends Authenticatable
 {
@@ -15,7 +16,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'address', 'password','cnic','phone','city_id','role_id',
+        'name', 'email', 'address', 'password','cnic','phone','city_id','role_id','image_path'
     ];
 
     /**
@@ -26,4 +27,18 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function image(){
+        if($this->img_path == null)
+        {
+            return "/images/blank-profile-picture.png";
+        }
+        else
+        {
+            //return "/images/". $this->id .'/' . $this->img_path;
+            return Storage::url($this->img_path);
+        }
+
+    }
+
 }

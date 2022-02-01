@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdminLoginController extends Controller
 {
@@ -29,6 +30,11 @@ class AdminLoginController extends Controller
         // Attempt to log the user in
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             // if successful, then redirect to their intended location
+            $admin = Auth::guard('admin');
+            $image_path = $admin->user()->image();
+            $city_id = $admin->user()->city_id;
+            session(['img_path' => $image_path,'city_id' => $city_id]);
+
             return redirect()->intended(route('admin.dashboard'));
         }
         // if unsuccessful, then redirect back to the login with the form data
