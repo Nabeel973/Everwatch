@@ -174,7 +174,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('settings.profile.edit',Auth::user()->id) }}">Profile</a>
+                    <a class="dropdown-item" href="{{ route('admin.settings.profile.edit',Auth::user()->id) }}">Profile</a>
                     <a class="dropdown-item" href="{{ route('admin.logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -282,13 +282,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('customers.index')}}" class="nav-link">
+                                <a href="{{route('admin.customers.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>View</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('customers.create')}}" class="nav-link">
+                                <a href="{{route('admin.customers.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create</p>
                                 </a>
@@ -415,13 +415,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('settings.city.index')}}" class="nav-link">
+                                <a href="{{route('admin.settings.city.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>City Management</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('settings.city.branch.index')}}" class="nav-link">
+                                <a href="{{route('admin.settings.city.branch.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Branch Management</p>
                                 </a>

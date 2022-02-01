@@ -39,7 +39,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{route('settings.city.store')}}" id="city_form" method="post">
+                        <form action="{{route('admin.settings.city.store')}}" id="city_form" method="post">
                             @csrf
                             <div class="form-group">
                                 <label>City Name</label>
@@ -203,7 +203,7 @@
                 },*/
                 serverSide: true,
                 ajax: {
-                    url: '{{ route('settings.city.list') }}'
+                    url: '{{ route('admin.settings.city.list') }}'
                 },
                 rowId: 'id',
                 order: [1, 'desc'],
@@ -268,7 +268,7 @@
 
                 if ($(this).hasClass('edit_city')) {
                     $.ajax({
-                        url: '{!! route('settings.city.edit') !!}',
+                        url: '{!! route('admin.settings.city.edit') !!}',
                         method: 'POST',
                         data: {
                             '_token': '{{ csrf_token() }}',
@@ -289,7 +289,7 @@
                             $('#edit_city_details').val(detail);
                             $('#edit_city_modal').modal('show');
 
-                            var route = '{!! route('settings.city.update', ':id') !!}';
+                            var route = '{!! route('admin.settings.city.update', ':id') !!}';
                             route = route.replace(':id', city_id);
                             $("#edit_city_form").attr('action', route);
                         }

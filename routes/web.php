@@ -22,11 +22,11 @@ Route::prefix('user')->group(function() {
     Route::get('/testhome', 'HomeController@testhome')->name('testhome');
 });
 
-Route::prefix('admin')->group(function() {
-    Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::post('logout/', 'Auth\AdminLoginController@logout')->name('admin.logout');
-    Route::get('/', 'Auth\AdminController@index')->name('admin.dashboard');
+Route::prefix('admin')->name('admin.')->group(function() {
+    Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('login.submit');
+    Route::post('logout/', 'Auth\AdminLoginController@logout')->name('logout');
+    Route::get('/', 'Auth\AdminController@index')->name('dashboard');
 
     Route::prefix('customers')->name('customers.')->group(function() {
         Route::get('/view','Admin\CustomersController@index')->name('index');

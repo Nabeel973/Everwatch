@@ -18,7 +18,7 @@
             <div class="row justify-content-center" style="margin-bottom: 40px;">
                 <img src="{{ $admin->image()}}" height="150px">
             </div>
-            <form id="profile_form" method="post" action="{{route('settings.profile.update')}}" enctype="multipart/form-data">
+            <form id="profile_form" method="post" action="{{route('admin.settings.profile.update')}}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="admin_id" value="{{$admin->id}}">
                 <div class="row mb-3 justify-content-center">
