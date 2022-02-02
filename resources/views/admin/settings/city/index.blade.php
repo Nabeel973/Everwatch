@@ -153,7 +153,6 @@
     <script src="{{asset('plugins/datatables-fixedheader/js/fixedHeader.bootstrap4.js')}}"></script>
     <script src="{{asset('plugins/datatables-fixedheader/js/dataTables.fixedHeader.js')}}"></script>
     <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.js')}}"></script>
-    <script src="{{asset('plugins/jquery-validation/jquery.validate.js')}}"></script>
 
    {{-- <script src="{{asset('plugins/datatables-buttons/js/buttons.print.js')}}"></script>
 --}}
@@ -198,15 +197,15 @@
                         text: '<i class="la la-file-excel-o"></i> Excel',
                     }
                 ],
-              /*  language: {
-                    processing: data_table_loader
-                },*/
-                serverSide: true,
                 ajax: {
                     url: '{{ route('admin.settings.city.list') }}'
                 },
                 rowId: 'id',
                 order: [1, 'desc'],
+              /*  language: {
+                    processing: data_table_loader
+                },*/
+                serverSide: true,
                 columns: [
                     {data: 'serial_number', orderable: false, searchable: false, name: 'serial_number', class: 'align-middle serial_number', targets: 0, render: function (data, type, row) {return '';}},
                     {data: 'name', name:"name",  class: 'align-middle name'},

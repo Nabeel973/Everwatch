@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,11 @@ class CustomersController extends Controller
     }
 
     public function create(){
-        return view('admin.users.create');
+        $cities = City::where('status',1)->get();
+        return view('admin.users.create',compact('cities'));
+    }
+
+    public function submit(Request $request){
+       dd($request);
     }
 }

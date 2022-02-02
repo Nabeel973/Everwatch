@@ -31,6 +31,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::prefix('customers')->name('customers.')->group(function() {
         Route::get('/view','Admin\CustomersController@index')->name('index');
         Route::get('/create','Admin\CustomersController@create')->name('create');
+        Route::post('/submit','Admin\CustomersController@submit')->name('submit');
     });
 
     Route::prefix('settings')->name('settings.')->group(function() {

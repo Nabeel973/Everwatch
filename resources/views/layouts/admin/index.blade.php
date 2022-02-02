@@ -35,7 +35,7 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-light" style="background-color: yellowgreen;">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -881,14 +881,13 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper" style="height: 100vh; background-color: white;">
+    <div class="content-wrapper bg-white">
         @yield('content')
 
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer text-center">
         <strong>Copyright &copy; 2021 Everwatch</strong>
-        All rights reserved.
        {{-- <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 3.2.0-rc
         </div>--}}
