@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\MessageBag;
 
 class AdminLoginController extends Controller
 {
@@ -21,8 +22,10 @@ class AdminLoginController extends Controller
 
     public function login(Request $request)
     {
+        $errors = new MessageBag; // initiate MessageBag
+
         // Validate the form data
-        $this->validate($request, [
+         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
@@ -38,7 +41,12 @@ class AdminLoginController extends Controller
             return redirect()->intended(route('admin.dashboard'));
         }
         // if unsuccessful, then redirect back to the login with the form data
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+       // return redirect()->back()->withInput($request->only('email', 'remember'));
+
+//        $errors = new MessageBag(['password' => ['Email and/or password invalid.']]);
+        $errors = new MessageBag(['password' => ['Email or password is invalid.']]); // if Auth::attempt fails (wrong credentials) create a new message bag instance.
+
+        return redirect()->back()->withErrors($errors)->withInput($request->only('email', 'remember'));
     }
 
     public function logout()

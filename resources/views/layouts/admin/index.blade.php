@@ -35,7 +35,7 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-light" style="background-color: yellowgreen;">
+    <nav class="main-header navbar navbar-expand navbar-light" style="background-color: #36979a;">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -234,7 +234,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
+                        <a href="#" class="nav-link {{  request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -272,8 +272,8 @@
                         </a>
                     </li>--}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
+                        <a href="#" class="nav-link {{  request()->routeIs('admin.customers.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-users"></i>
                             <p>
                                Customers
                                 <i class="fas fa-angle-left right"></i>
@@ -296,8 +296,8 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
+                        <a href="#" class="nav-link" {{  request()->routeIs('admin.customers.*') ? 'active' : '' }}>
+                            <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Users
                                 <i class="fas fa-angle-left right"></i>
@@ -320,7 +320,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link" {{  request()->routeIs('admin.dashboard') ? 'active' : '' }}>
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Complaints
@@ -381,8 +381,8 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
+                        <a href="#" class="nav-link {{  request()->routeIs('admin.reports.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-journal-whills"></i>
                             <p>
                                 Reports
                                 <i class="fas fa-angle-left right"></i>
@@ -405,8 +405,8 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
+                        <a href="#" class="nav-link {{  request()->routeIs('admin.setting.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-cog"></i>
                             <p>
                                 Settings
                                 <i class="fas fa-angle-left right"></i>
@@ -424,12 +424,6 @@
                                 <a href="{{route('admin.settings.city.branch.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Branch Management</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Type</p>
                                 </a>
                             </li>
                         </ul>
@@ -907,6 +901,10 @@
         border-radius: 50%;
         overflow: hidden;
         margin-top: -6px;
+    }
+
+    .active{
+        background-color: #36979a !important;
     }
 </style>
 

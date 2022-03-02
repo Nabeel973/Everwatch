@@ -11,8 +11,11 @@
             </div>
         </div>
     </div>
+
     <section class="content">
-        <form id="customer_form" method="post" action="{{route('admin.customers.submit')}}">
+        <div class="container-fluid">
+            @include('layouts.admin.messages')
+            <form id="customer_form" method="post" action="{{route('admin.customers.submit')}}" novalidate="novalidate">
             @csrf
             <div class="row mb-4">
                 <div class="col">
@@ -142,7 +145,7 @@
                         <td><div class="form-group"><input type="text" name="addmore[0][add_name]" id="add_name" placeholder="Name*" class="form-control name_list"  data-rule-required="true" data-msg-required="Name is required" /></div></td>
                                                 <td><div class="form-group"><input type="text" name="addmore[0][add_designation]" id="add_designation" placeholder="Designation*" class="form-control"  data-rule-required="true" data-msg-required="Designation is required" /></div></td>
                                                 <td><div class="form-group"><input type="text" name="addmore[0][add_phone]" id="add_phone" placeholder="Phone*" class="form-control"  data-rule-required="true" data-msg-required="Phone is required" /></div></td>
-                        <td><div class="form-group"><input type="email" name="addmore[0][email]" id="add_email" placeholder="Email*" class="form-control"  data-rule-required="true" data-msg-required="Email is required" /></div></td>
+                        <td><div class="form-group"><input type="email" name="addmore[0][add_email]" id="add_email" placeholder="Email*" class="form-control"  data-rule-required="true" data-msg-required="Email is required" /></div></td>
                                                 <td class="text-center"><button type="button" name="add" id="add" class="btn btn-success">Add </button></td>
                     </tr>
                 </table>
@@ -153,13 +156,14 @@
                 </div>
             </div>
         </form>
+        </div>
     </section>
 
 @endsection
 
-
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/sweetalert2/sweetalert2.min.css')}}">
 @endsection
 
 @section('scripts')
@@ -167,6 +171,7 @@
     <script src="{{asset('plugins/jquery-validation/jquery.validate.js')}}"></script>
     <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
     <script src="{{asset('plugins/inputmask/jquery.inputmask.min.js')}}"></script>
+    <script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -252,7 +257,7 @@
 
                     swal.fire({
                         title: 'Please Wait!',
-                        text: 'Your City is being created!',
+                        text: 'Customer is being Added!',
                         icon: 'success',
                         buttons: false,
                         closeOnClickOutside: false,

@@ -154,6 +154,7 @@
     <script src="{{asset('plugins/datatables-fixedheader/js/dataTables.fixedHeader.js')}}"></script>
     <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.js')}}"></script>
 
+
    {{-- <script src="{{asset('plugins/datatables-buttons/js/buttons.print.js')}}"></script>
 --}}
     <script type="text/javascript">
@@ -190,12 +191,6 @@
                             $('#add_city_modal').modal('show');
                         }
                     },
-                    {
-                        extend: 'excel',
-                        title: 'Cargo Manifest Mapping',
-                        className:'btn btn-primary',
-                        text: '<i class="la la-file-excel-o"></i> Excel',
-                    }
                 ],
                 ajax: {
                     url: '{{ route('admin.settings.city.list') }}'
